@@ -1,0 +1,399 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scale studio</title>
+<meta name="description" content="Estudios de Mercado I · Tema 5.4 — choose the scale from the analysis, build it, see it as the respondent will, and practise the four levels of measurement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Archivo:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#f4f2ea;--panel:#fbfaf5;--ink:#17251d;--soft:#4a5a50;--leaf:#2f6b4f;--leaf-ink:#21503b;
+  --clay:#bd5f3f;--line:#ddd8c9;--sage:#e7ece3;--chip:#eef1e8;--shadow:0 1px 2px rgba(23,37,29,.06),0 8px 24px rgba(23,37,29,.06);
+  --ok:#2f7d4f;--okbg:#e3f1e7;--bad:#b4442e;--badbg:#f8e5df;--warn:#9a6a12;--warnbg:#f7eed8;
+  --c1:#3b6fb5;--c2:#2f8f8f;--c3:#c9702f;--c4:#7a6bd0;--c5:#b0487a;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#111713;--panel:#18211b;--ink:#eef1ea;--soft:#a7b7ac;--leaf:#6bbd93;--leaf-ink:#8fd3ac;
+  --clay:#e08a68;--line:#2a352d;--sage:#1e2922;--chip:#212c25;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  --ok:#7fd3a0;--okbg:#18301f;--bad:#f08f78;--badbg:#3a1e18;--warn:#e9c066;--warnbg:#33290f;
+  --c1:#6ea8e6;--c2:#63c6c6;--c3:#e0a44f;--c4:#b0a6d6;--c5:#e08ab4;}}
+:root[data-theme="dark"]{
+  --ground:#111713;--panel:#18211b;--ink:#eef1ea;--soft:#a7b7ac;--leaf:#6bbd93;--leaf-ink:#8fd3ac;
+  --clay:#e08a68;--line:#2a352d;--sage:#1e2922;--chip:#212c25;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  --ok:#7fd3a0;--okbg:#18301f;--bad:#f08f78;--badbg:#3a1e18;--warn:#e9c066;--warnbg:#33290f;
+  --c1:#6ea8e6;--c2:#63c6c6;--c3:#e0a44f;--c4:#b0a6d6;--c5:#e08ab4;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:Archivo,system-ui,sans-serif;line-height:1.55;padding-inline:clamp(16px,4vw,40px)}
+.wrap{max-width:820px;margin:0 auto}
+header{padding-block:30px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.brandline{font:600 12px/1.3 Archivo;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf);margin:0 0 8px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:900;font-size:clamp(26px,5vw,36px);line-height:1.04;margin:0}
+.themebtn{background:var(--panel);border:1px solid var(--line);color:var(--soft);border-radius:999px;padding:6px 13px;font:500 13px Archivo;cursor:pointer}
+nav.suite{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0;font-size:12.5px}
+nav.suite a{border:1px solid var(--line);border-radius:999px;padding:4px 11px;text-decoration:none;color:var(--soft);background:var(--panel)}
+nav.suite a[aria-current]{background:var(--leaf);color:#fff;border-color:transparent}
+.sub{font-size:14px;color:var(--soft);margin:16px 0 4px}
+.case{background:var(--sage);border:1px solid var(--line);border-radius:14px;padding:15px 18px;margin:14px 0 6px;font-size:14.5px}
+.case b{font-weight:700}.case .q{color:var(--clay);font-weight:700}
+.who{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 4px}
+.who label{display:flex;flex-direction:column;gap:4px;font:700 10.5px Archivo;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.who input{border:1px solid var(--line);border-radius:8px;padding:9px 11px;font:400 14px Archivo;background:var(--panel);color:var(--ink);min-width:200px}
+.step{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--c,var(--leaf));border-radius:12px;padding:16px 18px;margin:15px 0;box-shadow:var(--shadow)}
+.step h2{font-family:Fraunces,serif;font-weight:900;font-size:19px;margin:0 0 3px;display:flex;align-items:center;gap:10px}
+.step h2 .n{background:var(--c,var(--leaf));color:#fff;width:28px;height:28px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+.step .lead{color:var(--soft);font-size:13px;margin:0 0 12px}
+h3{font:700 13px Archivo;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);margin:16px 0 6px}
+label.fl{display:block;font:700 11px Archivo;letter-spacing:.06em;text-transform:uppercase;margin:10px 0 6px}
+input.txt,textarea,select.txt{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--ground);color:var(--ink);padding:10px 12px;font:400 14px/1.5 Archivo;resize:none}
+select.txt{width:auto;padding:8px 10px}
+textarea{overflow:hidden;min-height:60px}
+textarea.capped{overflow:auto;resize:vertical}
+input.txt:focus,textarea:focus,select.txt:focus{outline:none;border-color:var(--c,var(--leaf))}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.num{width:80px}
+.btn{background:var(--leaf);color:#fff;border:0;border-radius:10px;padding:10px 16px;font:700 14px Archivo;cursor:pointer}
+.btn.sm{padding:6px 11px;font-size:12.5px;border-radius:8px}
+.btn.alt{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.how{background:var(--sage);border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:4px 0 12px;font-size:13px}
+.how ol,.how ul{margin:6px 0 0;padding-left:20px}.how li{margin:4px 0}.how b{color:var(--leaf-ink)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0}
+.chip{border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:999px;padding:6px 12px;font:600 12.5px Archivo;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--c,var(--leaf));border-color:transparent;color:#fff}
+.chip.right{background:var(--ok);color:#fff;border-color:transparent}
+.chip.wrong{background:var(--bad);color:#fff;border-color:transparent}
+.chip:disabled{cursor:default;opacity:.92}
+.fb{border-radius:10px;padding:10px 13px;font-size:13.5px;margin:8px 0 0}
+.fb.ok{background:var(--okbg);color:var(--ink);border:1px solid var(--ok)}
+.fb.no{background:var(--badbg);color:var(--ink);border:1px solid var(--bad)}
+.fb.mid{background:var(--warnbg);color:var(--ink);border:1px solid var(--warn)}
+.card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:10px 0;background:var(--ground)}
+.card .qtext{font:600 15px/1.45 Archivo;margin:0 0 4px}
+.card .opts{font-size:13px;color:var(--soft);margin:0 0 6px}
+.tag{display:inline-block;font:700 10.5px Archivo;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 7px;margin:0 4px 4px 0}
+.tag.warn{background:var(--warnbg);color:var(--warn)}
+.tag.bad{background:var(--badbg);color:var(--bad)}
+.tag.ok{background:var(--okbg);color:var(--ok)}
+.score{font:700 14px Archivo;color:var(--leaf-ink)}
+.copybtn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:8px 13px;font:600 12.5px Archivo;cursor:pointer;margin-bottom:10px}
+.copybtn:hover{border-color:var(--leaf)}
+pre.prompt{background:#14211b;color:#e8efe6;border-radius:10px;padding:14px;margin:0 0 10px;font:400 12px/1.6 ui-monospace,monospace;white-space:pre-wrap;max-height:420px;overflow:auto}
+.tools2{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.t2{display:flex;flex-direction:column;gap:1px;background:var(--ground);border:1px solid var(--line);border-radius:9px;padding:8px 12px;text-decoration:none;color:var(--ink);font:700 13px Archivo}
+.t2 span{font:500 10.5px Archivo;color:var(--soft)}.t2.main{background:var(--c,var(--leaf));color:#fff;border-color:transparent}.t2.main span{color:rgba(255,255,255,.82)}
+.checks{display:grid;gap:6px;margin:6px 0}
+.checks label{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;cursor:pointer;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--ground)}
+.checks input{margin-top:3px;accent-color:var(--leaf)}
+.checks small{display:block;color:var(--soft);font-size:12px}
+.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0 6px}
+.pdf{background:var(--clay);color:#fff;border:0;border-radius:10px;padding:13px 24px;font:700 15px Archivo;cursor:pointer}
+.ghost{background:transparent;border:1px solid var(--line);color:var(--soft);border-radius:10px;padding:12px 16px;font:600 13px Archivo;cursor:pointer}
+.saved{font-size:12px;color:var(--soft)}.hint{font-size:12.5px;color:var(--soft);margin:4px 0 0}
+.count{font:700 12.5px Archivo;color:var(--leaf);margin-top:6px;min-height:16px}
+table.t{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0}
+table.t th,table.t td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.t th{font:700 11px Archivo;letter-spacing:.05em;text-transform:uppercase;color:var(--soft)}
+.tablewrap{overflow-x:auto}
+footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid var(--line);padding-top:12px}
+.printonly{display:none}
+@media print{
+  header .themebtn,nav.suite,.tools2,.copybtn,pre.prompt,.step .lead,.bar,.how,.btn,.noprint,footer{display:none!important}
+  body{background:#fff;color:#000;padding:0}.step{border:1px solid #bbb;border-left:5px solid #666;break-inside:avoid;box-shadow:none}
+  textarea,input.txt{border-color:#bbb;background:#fff;color:#000}
+  .printonly{display:block;margin-bottom:10px;border-bottom:2px solid #2f6b4f;padding-bottom:6px}
+}
+
+.out{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--ground);margin:10px 0;font-size:14px}
+.out .lvl{font:900 20px Fraunces,serif;color:var(--c2)}
+.preview{border:2px dashed var(--line);border-radius:12px;padding:14px;background:#fff;color:#1d2420;margin:10px 0}
+:root[data-theme="dark"] .preview{background:#f7f7f2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .preview{background:#f7f7f2}}
+.preview .pq{font:600 15px/1.4 Archivo;margin:0 0 10px}
+.preview .pl{font:700 10px Archivo;letter-spacing:.1em;text-transform:uppercase;color:#7a857f;margin:0 0 6px}
+.lik{display:grid;gap:4px;text-align:center;font-size:11.5px;line-height:1.25}
+.lik label{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.sd{display:grid;grid-template-columns:minmax(70px,auto) 1fr minmax(70px,auto);gap:6px 10px;align-items:center;font-size:13px;margin:4px 0}
+.sd .pts{display:flex;justify-content:space-between;gap:2px}
+.sd .r{text-align:right}
+.stp{display:inline-flex;flex-direction:column;align-items:center;gap:2px;margin:0 10px 10px 0;font-size:12px}
+.stp .box{border:1px solid #9aa59f;border-radius:6px;padding:4px 14px;font-weight:700}
+.preview select,.preview input[type=number],.preview input[type=text]{border:1px solid #b9c2bc;border-radius:6px;padding:5px 7px;font:400 13px Archivo;background:#fff;color:#1d2420}
+.preview .opt{display:flex;gap:8px;align-items:center;margin:5px 0;font-size:14px}
+.pairs{display:grid;gap:5px;font-size:13.5px}
+.pairs .pr{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.tot{font:700 13px Archivo;margin-top:6px}
+.tot.bad{color:#b4442e}.tot.good{color:#2f7d4f}
+.cfg{display:grid;gap:8px}
+.cfg .row label{font-size:13px;display:flex;gap:6px;align-items:center}
+</style></head>
+<body><div class="wrap">
+<header>
+  <div><p class="brandline">Estudios de Mercado I · Tema 5 · Scales in marketing research (5.4)</p>
+  <h1>Scale studio</h1></div>
+  <button class="themebtn" id="theme">◐ Theme</button>
+</header>
+<nav class="suite" aria-label="Tema 5 tools"><span style="align-self:center;font-weight:700">Tema 5 tools:</span><a href="https://cmoreno34.github.io/scale-studio/" aria-current="page">Scale studio</a><a href="https://cmoreno34.github.io/question-checker/">Question checker</a><a href="https://cmoreno34.github.io/questionnaire-builder/">Questionnaire builder</a></nav>
+<div class="printonly"><div style="font:700 11px Archivo;letter-spacing:.1em;text-transform:uppercase;color:#2f6b4f">Estudios de Mercado I · Tema 5 — Scale studio worksheet</div></div>
+
+<p class="sub"><b>The rule this tool exists to state:</b> the scale sets the ceiling on your analysis. So work <b>backwards</b> — decide the analysis the client's question needs, then write the question at a scale that allows it. Build it below and see it exactly as the respondent will.</p>
+
+<div class="who">
+  <label>Name / group <input id="w_name" placeholder="Group 3 — A. García"></label>
+  <label>Date <input id="w_date" placeholder="dd/mm/yyyy"></label>
+</div>
+
+<div class="step" style="--c:var(--c1)">
+  <h2><span class="n">1</span> Start from the analysis, not the question</h2>
+  <p class="lead">Name the concept, say how you will observe it, then pick what you need to <b>do</b> with the answer. The studio tells you the lowest scale that allows it.</p>
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:1;min-width:220px"><label class="fl" for="w_concept">Concept (the idea)</label><input class="txt" id="w_concept" placeholder="e.g. loyalty to the gym"></div>
+    <div style="flex:2;min-width:260px"><label class="fl" for="w_opdef">Operational definition (what you will observe)</label><input class="txt" id="w_opdef" placeholder="e.g. likelihood to renew the membership next term"></div>
+  </div>
+  <label class="fl">What must you be able to do with the answer?</label>
+  <div class="chips" id="anal"></div>
+  <div class="out" id="analOut" style="display:none"></div>
+</div>
+
+<div class="step" style="--c:var(--c2)">
+  <h2><span class="n">2</span> Build the scale — see it as the respondent will</h2>
+  <p class="lead">Pick a scale type, write your item, and the preview updates live. The panel under it states the level of measurement and the analysis it unlocks.</p>
+  <div class="chips" id="types"></div>
+  <div class="cfg" id="cfg"></div>
+  <div class="preview" id="preview"></div>
+  <div class="out" id="spec"></div>
+  <div class="row noprint">
+    <button class="copybtn" id="copyQ" style="margin:0">copy as text (for Google / MS Forms)</button>
+    <button class="copybtn" id="addQ" style="margin:0">＋ add to my scales sheet (step 4)</button>
+  </div>
+</div>
+
+<div class="step" style="--c:var(--c3)">
+  <h2><span class="n">3</span> Practise — name the level of measurement</h2>
+  <p class="lead">For each question, pick the level. You get the reason straight away — including the traps (numbers that are only labels, two-point “scales”, the Likert convention).</p>
+  <div id="quiz"></div>
+  <div class="row"><span class="score" id="qscore"></span><button class="btn sm alt noprint" id="qreset">reset practice</button></div>
+</div>
+
+<div class="step" style="--c:var(--c4)">
+  <h2><span class="n">4</span> Your project's scales</h2>
+  <p class="lead">For each key concept in your project: concept → operational definition → analysis you need → the scale you will use. Paste from step 2 with the ＋ button, then justify.</p>
+  <label class="fl" for="w_sheet">My scales sheet</label>
+  <textarea id="w_sheet" style="min-height:120px" placeholder="Loyalty → likelihood to renew next term → need a MEAN to compare first-years vs others (t-test) → 7-point labelled Likert (interval by convention)."></textarea>
+  <label class="fl" for="w_why">The one scale decision you would defend to the client — and what you would lose with a lower scale</label>
+  <textarea id="w_why" placeholder="e.g. We asked hours per week as a number (ratio), not Rarely/Often, because the client wants to correlate study hours with music use — two labels would have made that impossible."></textarea>
+</div>
+
+<div class="bar">
+  <button class="pdf" id="pdf">⬇ Download PDF</button>
+  <button class="ghost" id="clear">Clear worksheet</button>
+  <span class="saved" id="saved">Saved in this browser</span>
+</div>
+<footer>Estudios de Mercado I · Tema 5.4 · The studio describes each scale; <b>you</b> decide which one your client's question needs.</footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const val=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
+const lines=t=>String(t||'').split('\n').map(x=>x.trim()).filter(Boolean);
+const KEY='em1_t5_scale_studio';
+let state={anal:null,type:'likert',cfg:{},quiz:{}};
+
+/* ---------- 1. analysis → scale ---------- */
+const ANAL={
+  freq:{label:'Count it — % and the mode',level:'Nominal',types:['mc','multi','dich'],
+    why:'Categories with no order are enough to count. Anything higher is allowed but not needed.',
+    warn:'You will not get an average out of this — “the average device is 2.3” means nothing.'},
+  xtab:{label:'Compare groups — cross-tab & chi-square',level:'Nominal',types:['mc','dich','likert'],
+    why:'A cross-tab needs categories on both sides. Keep the number of categories small so the cells do not run thin.',
+    warn:'Too many categories → expected counts below 5 → the chi-square is not valid. Plan 3–5 categories.'},
+  rank:{label:'Put things in order — ranking, median',level:'Ordinal',types:['rank','paired'],
+    why:'You need order, not distance. A ranking forces a genuine order instead of everything scoring “4”.',
+    warn:'The gap between 1st and 2nd is not a fixed quantity — do not average ranks as if it were.'},
+  mean:{label:'Average it — mean, compare means (t-test)',level:'Interval',types:['likert','rating','sd','stapel'],
+    why:'A mean needs equal gaps. A fully labelled 5- or 7-point scale is treated as interval by convention.',
+    warn:'Two labels (Satisfied / Unsatisfied) give you no mean. That mistake is only found after fieldwork.'},
+  corr:{label:'Relate two measures — correlation',level:'Interval',types:['likert','rating','num'],
+    why:'Correlation needs both variables at interval level or higher.',
+    warn:'If either variable is a category, you are back to a cross-tab, not a correlation.'},
+  weight:{label:'Relative importance — what matters most',level:'Ratio',types:['csum','rank'],
+    why:'Constant sum forces a trade-off: 100 points shared out reveals relative weight, which a rating where everything is “very important” cannot.',
+    warn:'Beyond ~6 items respondents struggle to make the points add up. Keep the list short.'},
+  image:{label:'Brand image profile',level:'Interval',types:['sd','stapel'],
+    why:'Bipolar adjectives rated on the same points plot as a profile — two brands can be compared line by line.',
+    warn:'Mix the side the “good” adjective sits on, or you invite yea-saying down one column.'},
+  qty:{label:'An exact quantity — how many, how much',level:'Ratio',types:['num'],
+    why:'A real number with a true zero: 10 hours is twice 5. Everything in Tema 8 is open to you.',
+    warn:'Keep the recall window short (“in a normal week”), or people guess.'},
+  why:{label:'Unprompted reasons — the words people use',level:'— (qualitative)',types:['open'],
+    why:'An open question gives words, not a scale. You analyse it with thematic coding (Tema 3.7).',
+    warn:'Every open question costs completion time. One or two per survey, not ten.'}
+};
+const TYPES={
+  likert:'Likert',sd:'Semantic differential',stapel:'Stapel',rating:'Numeric rating 0–10',
+  mc:'Multiple choice',multi:'Multiple response',dich:'Dichotomous',
+  rank:'Ranking',paired:'Paired comparison',csum:'Constant sum',num:'Numeric (quantity)',open:'Open-ended'};
+
+function renderAnal(){
+  const el=$('#anal');el.innerHTML='';
+  Object.entries(ANAL).forEach(([k,a])=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=a.label;
+    b.setAttribute('aria-pressed',state.anal===k);b.onclick=()=>{state.anal=k;renderAnal();save();};el.appendChild(b);});
+  const o=$('#analOut');
+  if(!state.anal){o.style.display='none';return;}
+  const a=ANAL[state.anal];o.style.display='';
+  const c=val('w_concept')||'your concept';
+  o.innerHTML=`<div>Lowest level that allows it: <span class="lvl">${a.level}</span></div>
+  <p style="margin:6px 0">${esc(a.why)}</p>
+  <p style="margin:6px 0"><span class="tag warn">watch</span>${esc(a.warn)}</p>
+  <div style="margin-top:8px;font-size:13px"><b>Scales that can measure ${esc(c)} this way — open one in step 2:</b></div>
+  <div class="chips">${a.types.map(t=>`<button class="chip" type="button" data-t="${t}">${TYPES[t]}</button>`).join('')}</div>`;
+  o.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{state.type=b.dataset.t;renderTypes();renderCfg();document.querySelector('#types').scrollIntoView({behavior:'smooth',block:'center'});save();});
+}
+
+/* ---------- 2. builder ---------- */
+const DEF={
+  likert:{q:'I would recommend this gym to a friend.',pts:'5',all:true,dk:false},
+  sd:{q:'How would you describe the brand?',pairs:'Cheap | Expensive\nBoring | Fun\nOld-fashioned | Modern\nUnreliable | Reliable',pts:'7'},
+  stapel:{q:'How well does each word describe the brand?',items:'Friendly\nInnovative\nGood value',range:'3'},
+  rating:{q:'How likely are you to recommend us to a friend?',lo:'Not at all likely',hi:'Extremely likely'},
+  mc:{q:'Which device do you mainly use to listen to music?',opts:'Phone\nLaptop\nTablet\nSmart speaker',other:true,none:false,rand:true},
+  multi:{q:'Which of these streaming services have you used in the last month? (tick all that apply)',opts:'Spotify\nApple Music\nYouTube Music\nAmazon Music',other:true,none:true,rand:true},
+  dich:{q:'Do you listen to music while studying?',opts:'Yes\nNo'},
+  rank:{q:'Rank these from 1 (most important) to last when choosing a gym.',opts:'Price\nLocation\nOpening hours\nEquipment\nClasses'},
+  paired:{q:'For each pair, which would make you more likely to choose a café?',opts:'Price\nWi-fi\nQuiet\nCoffee quality'},
+  csum:{q:'Share 100 points across these by how much each matters when you choose a restaurant.',opts:'Price\nFood quality\nLocation\nAtmosphere',total:'100'},
+  num:{q:'In a normal week, how many hours do you listen to music while studying?',unit:'hours',min:'0',max:'80'},
+  open:{q:'What, if anything, would make you renew your membership?'}
+};
+function cfg(){return state.cfg[state.type]||(state.cfg[state.type]=JSON.parse(JSON.stringify(DEF[state.type])));}
+function renderTypes(){const el=$('#types');el.innerHTML='';
+  Object.entries(TYPES).forEach(([k,n])=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=n;b.setAttribute('aria-pressed',state.type===k);
+    b.onclick=()=>{state.type=k;renderTypes();renderCfg();save();};el.appendChild(b);});}
+function fld(key,label,kind,extra=''){const c=cfg();const v=c[key];
+  if(kind==='area')return `<div><label class="fl">${label}</label><textarea class="capped" data-k="${key}" style="min-height:90px">${esc(v)}</textarea></div>`;
+  if(kind==='chk')return `<label><input type="checkbox" data-k="${key}" ${v?'checked':''}> ${label}</label>`;
+  if(kind==='sel')return `<label>${label} <select class="txt" data-k="${key}">${extra.split(',').map(o=>`<option ${String(v)===o?'selected':''}>${o}</option>`).join('')}</select></label>`;
+  return `<div style="flex:1;min-width:160px"><label class="fl">${label}</label><input class="txt" data-k="${key}" value="${esc(v)}"></div>`;}
+function renderCfg(){const t=state.type;let h=fld('q',t==='likert'?'Statement':t==='sd'||t==='stapel'?'Instruction / object':'Question');
+  if(t==='likert')h+=`<div class="row">${fld('pts','Points','sel','4,5,6,7')}${fld('all','label every point','chk')}${fld('dk','add “Don’t know”','chk')}</div>`;
+  if(t==='sd')h+=fld('pairs','Adjective pairs — one per line, “left | right”','area')+`<div class="row">${fld('pts','Points','sel','5,7')}</div>`;
+  if(t==='stapel')h+=fld('items','Adjectives — one per line','area')+`<div class="row">${fld('range','Range ±','sel','3,5')}</div>`;
+  if(t==='rating')h+=`<div class="row">${fld('lo','Label at 0')}${fld('hi','Label at 10')}</div>`;
+  if(t==='mc'||t==='multi')h+=fld('opts','Options — one per line','area')+`<div class="row">${fld('other','add “Other (please specify)”','chk')}${fld('none',t==='multi'?'add “None of these”':'add “Prefer not to say”','chk')}${fld('rand','randomise option order','chk')}</div>`;
+  if(t==='dich')h+=fld('opts','Options — one per line','area');
+  if(t==='rank'||t==='paired')h+=fld('opts','Items — one per line','area');
+  if(t==='csum')h+=fld('opts','Items — one per line','area')+`<div class="row">${fld('total','Points to share','sel','10,100')}</div>`;
+  if(t==='num')h+=`<div class="row">${fld('unit','Unit')}${fld('min','Min')}${fld('max','Max')}</div>`;
+  const el=$('#cfg');el.innerHTML=h;
+  el.querySelectorAll('[data-k]').forEach(i=>{const k=i.dataset.k;const ev=i.type==='checkbox'||i.tagName==='SELECT'?'change':'input';
+    i.addEventListener(ev,()=>{cfg()[k]=i.type==='checkbox'?i.checked:i.value;renderPreview();save();});});
+  renderPreview();
+}
+const LIK={4:['Strongly disagree','Disagree','Agree','Strongly agree'],
+  5:['Strongly disagree','Disagree','Neither agree nor disagree','Agree','Strongly agree'],
+  6:['Strongly disagree','Disagree','Somewhat disagree','Somewhat agree','Agree','Strongly agree'],
+  7:['Strongly disagree','Disagree','Somewhat disagree','Neither agree nor disagree','Somewhat agree','Agree','Strongly agree']};
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+let uid=0;
+function optsOf(c,t){let o=lines(c.opts);if(c.rand)o=shuffle(o);if(c.other)o.push('Other (please specify)');if(c.none)o.push(t==='multi'?'None of these':'Prefer not to say');return o;}
+function renderPreview(){const t=state.type,c=cfg();const n='p'+(++uid);let h=`<p class="pl">Respondent view</p><p class="pq">${esc(c.q)}</p>`;
+  if(t==='likert'){const L=LIK[c.pts];const cols=L.length+(c.dk?1:0);
+    h+=`<div class="lik" style="grid-template-columns:repeat(${cols},1fr)">${L.map((l,i)=>`<label><input type="radio" name="${n}">${c.all||i===0||i===L.length-1?esc(l):'&nbsp;'}<b>${i+1}</b></label>`).join('')}${c.dk?`<label><input type="radio" name="${n}">Don’t know<b>&nbsp;</b></label>`:''}</div>`;}
+  if(t==='sd'){lines(c.pairs).forEach((p,j)=>{const [a,b]=p.split('|').map(s=>(s||'').trim());
+    h+=`<div class="sd"><span>${esc(a)}</span><span class="pts">${Array.from({length:+c.pts},()=>`<input type="radio" name="${n}_${j}">`).join('')}</span><span class="r">${esc(b||'?')}</span></div>`;});}
+  if(t==='stapel'){const r=+c.range;const vals=[];for(let v=r;v>=-r;v--)if(v!==0)vals.push(v);
+    lines(c.items).forEach((it,j)=>{h+=`<div class="stp">${vals.filter(v=>v>0).map(v=>`<label><input type="radio" name="${n}_${j}"> +${v}</label>`).join('')}<span class="box">${esc(it)}</span>${vals.filter(v=>v<0).map(v=>`<label><input type="radio" name="${n}_${j}"> ${v}</label>`).join('')}</div>`;});}
+  if(t==='rating'){h+=`<div class="lik" style="grid-template-columns:repeat(11,1fr)">${Array.from({length:11},(_,i)=>`<label><input type="radio" name="${n}"><b>${i}</b></label>`).join('')}</div><div style="display:flex;justify-content:space-between;font-size:11.5px;margin-top:4px"><span>${esc(c.lo)}</span><span>${esc(c.hi)}</span></div>`;}
+  if(t==='mc'||t==='dich'){const o=t==='dich'?lines(c.opts):optsOf(c,t);h+=o.map(x=>`<label class="opt"><input type="radio" name="${n}"> ${esc(x)}${/specify/.test(x)?' <input type="text" style="width:140px">':''}</label>`).join('');}
+  if(t==='multi'){h+=optsOf(c,t).map(x=>`<label class="opt"><input type="checkbox"> ${esc(x)}${/specify/.test(x)?' <input type="text" style="width:140px">':''}</label>`).join('');}
+  if(t==='rank'){const o=lines(c.opts);h+=o.map(x=>`<div class="opt"><select class="rk"><option value="">–</option>${o.map((_,i)=>`<option>${i+1}</option>`).join('')}</select> ${esc(x)}</div>`).join('')+`<div class="tot" id="rkmsg"></div>`;}
+  if(t==='paired'){const o=lines(c.opts);const pr=[];for(let i=0;i<o.length;i++)for(let j=i+1;j<o.length;j++)pr.push([o[i],o[j]]);
+    h+=`<div class="pairs">${pr.map((p,k)=>`<div class="pr"><label><input type="radio" name="${n}_${k}"> ${esc(p[0])}</label><span style="color:#8a948e">or</span><label><input type="radio" name="${n}_${k}"> ${esc(p[1])}</label></div>`).join('')}</div>`;}
+  if(t==='csum'){const o=lines(c.opts);h+=o.map(x=>`<div class="opt"><input type="number" class="cs" min="0" max="${c.total}" style="width:70px"> ${esc(x)}</div>`).join('')+`<div class="tot" id="csmsg">Total: 0 / ${c.total}</div>`;}
+  if(t==='num'){h+=`<div class="opt"><input type="number" min="${esc(c.min)}" max="${esc(c.max)}" style="width:90px"> ${esc(c.unit)}</div>`;}
+  if(t==='open'){h+=`<textarea style="width:100%;min-height:70px;border:1px solid #b9c2bc;border-radius:6px;background:#fff;color:#1d2420"></textarea>`;}
+  $('#preview').innerHTML=h;
+  if(t==='csum'){const tot=+c.total;const upd=()=>{const s=[...document.querySelectorAll('.cs')].reduce((a,i)=>a+(+i.value||0),0);const m=$('#csmsg');m.textContent=`Total: ${s} / ${tot}`+(s===tot?' ✓':s>tot?' — too many points':' — keep going');m.className='tot '+(s===tot?'good':s>tot?'bad':'');};document.querySelectorAll('.cs').forEach(i=>i.oninput=upd);}
+  if(t==='rank'){const upd=()=>{const v=[...document.querySelectorAll('.rk')].map(s=>s.value).filter(Boolean);const m=$('#rkmsg');const dup=v.length!==new Set(v).size;m.textContent=dup?'Each rank can be used once.':v.length===lines(c.opts).length?'Complete ✓':'';m.className='tot '+(dup?'bad':v.length===lines(c.opts).length?'good':'');};document.querySelectorAll('.rk').forEach(s=>s.onchange=upd);}
+  renderSpec();
+}
+function spec(){const t=state.type,c=cfg();
+  const S={
+   likert:['Interval (by convention)','Mean, standard deviation, t-test, Pearson correlation — and median / cross-tab if you prefer to stay ordinal.',
+     (+c.pts%2===0?'An even number of points removes the neutral middle: people who feel neither are forced to pick a side. Do it only on purpose. ':'')+(!c.all?'Only the ends are labelled — label every point so each number means the same thing to everyone. ':'')+'Strictly the gaps need not be equal; treating it as interval is a convention worth knowing you are making. Reverse-word two or three items to catch acquiescence (5.5).'],
+   sd:['Interval (by convention)','A profile: the mean on each pair, plotted as a line, compared across brands.',
+     'Mix which side the positive adjective is on, so a yea-sayer cannot tick down one column. Make sure each pair is a true opposite.'],
+   stapel:['Interval (by convention)','Mean per adjective; compare across brands.','Use it when you cannot find a clean opposite for a semantic differential.'],
+   rating:['Interval (by convention)','Mean, t-test, correlation. 0–10 is also the format of the Net Promoter question.','Label both ends. Eleven points give fine discrimination but are heavy on a phone grid — keep the grid short.'],
+   mc:['Nominal','Frequencies, %, mode, cross-tab and chi-square.',(c.rand?'Options are randomised per respondent — this removes primacy bias (5.5). ':'Randomise the option order unless the order is meaningful — the first option wins share it has not earned. ')+((c.other||c.none)?'':'There is no escape option: anyone the list does not fit must give a false answer.')],
+   multi:['Nominal — one yes/no per option','A frequency per option (each option is its own variable) — not one frequency table. Percentages add up to more than 100%.',(c.none?'':'Add “None of these” so a blank means “not answered”, not “none”. ')+'Randomise the option order.'],
+   dich:['Nominal','Frequencies, cross-tab, chi-square.','Use it only when the world really is yes/no. If there are degrees, ask for them — you cannot get them back later.'],
+   rank:['Ordinal','Median rank, % ranked first, Spearman correlation.',`${lines(c.opts).length} items. Ranking forces a real order, but beyond ~7 items the lower ranks become noise.`],
+   paired:['Ordinal','Count how often each item wins → a rank order.',(()=>{const k=lines(c.opts).length;const p=k*(k-1)/2;return `${k} items → ${p} comparisons (n(n−1)/2).`+(p>10?' That is already a lot for a respondent — it scales badly; consider ranking or constant sum instead.':' Manageable.');})()],
+   csum:['Ratio','Mean points per item = relative weight. “Price is worth twice location” is a legitimate statement here.',`${lines(c.opts).length} items, ${c.total} points.`+(lines(c.opts).length>6?' More than ~6 items and respondents struggle to make it add up.':' The form must check the total, or you will receive sums of 87 and 130.')],
+   num:['Ratio','Everything: mean, sd, t-test, correlation, regression — and you can still group it into ranges later. The reverse is impossible.','Set a sensible min/max so a typo (800 hours) is blocked. Keep the recall window short.'],
+   open:['— (text)','Thematic coding (Tema 3.7): codes → categories → themes, then count how often each appears.','Costs time and gets skipped on phones. Use one or two, usually at the end (“Anything else?”).']};
+  return S[t];}
+function renderSpec(){const [lvl,an,w]=spec();$('#spec').innerHTML=`<div>Level of measurement: <span class="lvl" style="font-size:17px">${esc(lvl)}</span></div><p style="margin:6px 0"><b>Unlocks:</b> ${esc(an)}</p><p style="margin:6px 0"><span class="tag warn">check</span>${esc(w)}</p>`;}
+function asText(){const t=state.type,c=cfg();let o=[];
+  if(t==='likert')o=LIK[c.pts].map((l,i)=>`${i+1} = ${l}`).concat(c.dk?['Don’t know']:[]);
+  if(t==='sd')o=lines(c.pairs).map(p=>{const[a,b]=p.split('|').map(s=>(s||'').trim());return `${a}  ${Array.from({length:+c.pts},(_,i)=>i+1).join(' ')}  ${b}`;});
+  if(t==='stapel')o=lines(c.items).map(i=>`${i}: −${c.range} … +${c.range} (no zero)`);
+  if(t==='rating')o=[`0 = ${c.lo} … 10 = ${c.hi}`];
+  if(t==='mc'||t==='multi')o=lines(c.opts).concat(c.other?['Other (please specify)']:[]).concat(c.none?[t==='multi'?'None of these':'Prefer not to say']:[]);
+  if(t==='dich')o=lines(c.opts);
+  if(t==='rank')o=lines(c.opts).map(x=>`${x}  [rank 1–${lines(c.opts).length}]`);
+  if(t==='paired'){const k=lines(c.opts);for(let i=0;i<k.length;i++)for(let j=i+1;j<k.length;j++)o.push(`${k[i]}  or  ${k[j]}`);}
+  if(t==='csum')o=lines(c.opts).map(x=>`${x}: ___ points`).concat([`Total must equal ${c.total}`]);
+  if(t==='num')o=[`___ ${c.unit} (${c.min}–${c.max})`];
+  if(t==='open')o=['[open text]'];
+  const [lvl]=spec();
+  return `${c.q}\n${o.map(x=>'- '+x).join('\n')}\n[${TYPES[t]} · ${lvl}${(c.rand&&(t==='mc'||t==='multi'))?' · randomise options':''}]`;}
+
+/* ---------- 3. practice ---------- */
+const QZ=[
+ {q:'Which device do you mainly use to stream music?',o:'Phone / Laptop / Tablet / Smart speaker',a:'N',why:'Categories with no order. Count them and find the mode — no average.'},
+ {q:'Rank these four features from 1 (most important) to 4.',o:'Price · Battery · Camera · Design',a:'O',why:'Order without fixed gaps: the distance between 1st and 2nd is not a quantity.'},
+ {q:'How much did you spend on concerts in the last 3 months?',o:'___ €',a:'R',why:'A true zero (0 € means none) and equal units — 40 € really is twice 20 €.'},
+ {q:'“I would recommend this app to a friend.”',o:'1 Strongly disagree … 7 Strongly agree',a:'I',alt:'O',altwhy:'Strictly true — the gaps need not be equal. But a fully labelled Likert is treated as interval by convention, which is what lets you average it.',why:'A labelled Likert is treated as interval by convention — that is what allows a mean and a t-test.'},
+ {q:'What year of your degree are you in?',o:'1st / 2nd / 3rd / 4th',a:'O',why:'Ordered categories. Note: as a category it is ordinal even though the labels contain numbers.'},
+ {q:'What is your postcode?',o:'_____',a:'N',why:'The trap: numbers used as labels. 28040 is not “more” than 28001 — you cannot average postcodes.'},
+ {q:'Age in years',o:'___',a:'R',why:'Counted from a true zero. Ask it as a number and you can always group it into ranges later — never the other way round.'},
+ {q:'Rate the brand: Cheap 1 2 3 4 5 6 7 Expensive',o:'Semantic differential',a:'I',alt:'O',altwhy:'Defensible strictly — but semantic differentials are treated as interval in practice so brand profiles can be averaged.',why:'Treated as interval by convention; the means draw the brand profile.'},
+ {q:'Do you have a paid streaming subscription?',o:'Yes / No',a:'N',why:'Two unordered categories. Frequencies and cross-tabs only.'},
+ {q:'Share 100 points across price, variety and location by importance.',o:'Constant sum',a:'R',why:'Points have a true zero and equal units: 40 points really is twice 20 — relative weight.'},
+ {q:'Household income per year',o:'< 20k / 20–40k / 40–60k / > 60k',a:'O',why:'Ordered brackets with unequal, open-ended ends. Ask the number if you need a mean — but expect refusals.'},
+ {q:'For each pair, which café would you choose?',o:'A or B · A or C · B or C',a:'O',why:'Paired comparison yields an order (how often each wins), not distances.'},
+ {q:'How satisfied are you?',o:'Satisfied / Unsatisfied',a:'N',alt:'O',altwhy:'There is an order, so ordinal is fair — but with two points you have a split, not a scale. The real lesson: you will never get a mean out of it.',why:'Two labels give a yes/no split. If the client wanted average satisfaction, this question has already failed.'},
+ {q:'Temperature in the venue (°C)',o:'___ °C',a:'I',why:'Equal gaps but an arbitrary zero: 0 °C is not “no temperature”, so 20 °C is not twice 10 °C.'}
+];
+const LV={N:'Nominal',O:'Ordinal',I:'Interval',R:'Ratio'};
+function renderQuiz(){const el=$('#quiz');el.innerHTML='';let right=0,done=0;
+  QZ.forEach((z,i)=>{const ans=state.quiz[i];const card=document.createElement('div');card.className='card';
+    let fb='';if(ans){done++;const ok=ans===z.a;if(ok)right++;
+      fb=ok?`<div class="fb ok">✓ ${LV[z.a]}. ${esc(z.why)}</div>`:(ans===z.alt?`<div class="fb mid">≈ ${LV[ans]} — ${esc(z.altwhy)} Course answer: <b>${LV[z.a]}</b>.</div>`:`<div class="fb no">✗ Not ${LV[ans]}. It is <b>${LV[z.a]}</b>: ${esc(z.why)}</div>`);}
+    card.innerHTML=`<p class="qtext">${i+1}. ${esc(z.q)}</p><p class="opts">${esc(z.o)}</p><div class="chips">${Object.entries(LV).map(([k,n])=>`<button class="chip ${ans?(k===z.a?'right':(k===ans?'wrong':'')):''}" type="button" data-k="${k}" ${ans?'disabled':''}>${n}</button>`).join('')}</div>${fb}`;
+    card.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{state.quiz[i]=b.dataset.k;renderQuiz();save();});
+    el.appendChild(card);});
+  $('#qscore').textContent=done?`${right} / ${done} right · ${QZ.length-done} to go`:`${QZ.length} questions`;
+}
+
+/* ---------- persistence ---------- */
+const ids=['w_name','w_date','w_concept','w_opdef','w_sheet','w_why'];
+let st;function save(){clearTimeout(st);st=setTimeout(()=>{const o={state};ids.forEach(i=>o[i]=val(i));
+  try{localStorage.setItem(KEY,JSON.stringify(o));$('#saved').textContent='Saved ✓ '+new Date().toLocaleTimeString();}catch(_){}} ,300);}
+function autogrow(t){t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px';}
+(function init(){let s={};try{s=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(_){}
+  if(s.state)state=Object.assign(state,s.state);if(!TYPES[state.type])state.type='likert';
+  ids.forEach(i=>{const el=document.getElementById(i);el.value=s[i]||'';el.addEventListener('input',()=>{if(el.tagName==='TEXTAREA')autogrow(el);save();if(i==='w_concept')renderAnal();});if(el.tagName==='TEXTAREA')autogrow(el);});
+  renderAnal();renderTypes();renderCfg();renderQuiz();})();
+$('#qreset').onclick=()=>{state.quiz={};renderQuiz();save();};
+function copy(text,btn){const o=btn.textContent;const ok=()=>{btn.textContent='copied ✓';setTimeout(()=>btn.textContent=o,1200);};
+  const fb=()=>{try{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.top='-1000px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(_){btn.textContent='Ctrl+C';}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok).catch(fb);}else{fb();}}
+$('#copyQ').onclick=e=>copy(asText(),e.currentTarget);
+$('#addQ').onclick=e=>{const t=$('#w_sheet');const head=[val('w_concept'),val('w_opdef'),state.anal?ANAL[state.anal].label:''].filter(Boolean).join(' → ');
+  t.value=(t.value.trim()?t.value.trim()+'\n\n':'')+(head?head+'\n':'')+asText();autogrow(t);save();const b=e.currentTarget,o=b.textContent;b.textContent='added ✓';setTimeout(()=>b.textContent=o,1200);};
+$('#pdf').onclick=()=>{if(!val('w_date'))$('#w_date').value=new Date().toLocaleDateString();window.print();};
+$('#clear').onclick=()=>{if(confirm('Clear the worksheet? Download your PDF first if you need it.')){try{localStorage.removeItem(KEY);}catch(_){}location.reload();}};
+const root=document.documentElement;$('#theme').onclick=()=>{const c=root.getAttribute('data-theme');root.setAttribute('data-theme',c==='dark'?'light':c==='light'?'dark':(matchMedia('(prefers-color-scheme:dark)').matches?'light':'dark'));};
+</script>
+</body></html>
