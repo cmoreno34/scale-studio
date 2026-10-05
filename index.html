@@ -162,7 +162,7 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
   <p class="goal">To learn the rule of 5.4: <b>the scale sets the ceiling on your analysis</b>. You will choose how to measure each concept of your project by working <b>backwards</b> from what the client needs to know — before you write a single question.</p>
   <h3>What you will do</h3>
   <ol>
-    <li><b>Step 1</b> — write your <b>project</b> (topic, client, decision) — or pick a <b>suggested project</b>. You will keep this same project in the three practicals.<span class="min">3 min</span></li>
+    <li><b>Step 1</b> — write your <b>project</b> (topic, client, decision) — or pick a <b>suggested project</b>. If it comes from your <b>qualitative study</b> (Tema 3), load its results with one click: the themes become the concepts you measure. You keep this same project in the three practicals.<span class="min">5 min</span></li>
     <li><b>Step 2</b> — take one concept of the project, say exactly how you will observe it, and choose what you must <b>do</b> with the answer (count it, average it, rank it…). Note the minimum level of measurement it gives you.<span class="min">5 min</span></li>
     <li><b>Step 3</b> — build the scale, look at it as the respondent will, read the check panel and fix what it points out. Press <b>＋ add this concept to my project</b>. Repeat steps 2–3 for <b>three key concepts</b>.<span class="min">20 min</span></li>
     <li><b>Step 4</b> — practise the four levels on 14 questions. Aim for 11 or more, and read the reason for every miss — the traps are on purpose.<span class="min">10 min</span></li>
@@ -173,6 +173,7 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
     <div><b>How it is marked</b><ul><li>Each scale allows the analysis you need (no mean on a nominal question).</li><li>The operational definitions are observable, not vague.</li><li>The justification — the judgement is yours, not the tool's.</li></ul></div>
   </div>
   <p class="next"><b>Next →</b> <b>Send my project to the builder</b> (step 5) carries your project and your three concepts — with the analysis and the scale you chose — into the <a href="https://cmoreno34.github.io/questionnaire-builder/">questionnaire builder</a>. You do not type them again.</p>
+  <p class="next"><b>Working over several days?</b> Everything saves itself in this browser. On a shared computer, or to switch computer, use <b>💾 Save my work</b> at the bottom of the page and, next time, <b>📂 Open saved work</b>.</p>
 </section>
 
 <div class="who">
@@ -191,6 +192,23 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
   </div>
   <label class="fl" for="w_pdecision">The decision the survey is for</label>
   <input class="txt" id="w_pdecision" placeholder="e.g. which membership plan and opening hours to launch with">
+  <div class="how" style="background:var(--panel);margin-top:14px">
+    <b>Does your project come from a qualitative study (Tema 3)? Start from it.</b> A survey usually <b>quantifies</b> what the qualitative study found: each theme becomes a concept you measure. Bring the results in — they also travel to the builder.
+    <div class="row" style="margin-top:8px">
+      <button class="btn sm alt" type="button" data-q="fg">Load my focus group studio</button>
+      <button class="btn sm alt" type="button" data-q="netno">Load my netnography studio</button>
+      <button class="btn sm alt" type="button" data-q="case">Load my qualitative case studio</button>
+    </div>
+    <div class="row"><span style="font-size:13px">…or upload a file (.txt, .md, .docx, .pdf):</span><input type="file" id="qfile" accept=".txt,.md,.docx,.pdf,text/plain"></div>
+    <div class="count" id="qmsg"></div>
+    <label class="fl" for="w_qual">Your qualitative results — themes, quotes, insights (paste, load or upload)</label>
+    <textarea id="w_qual" class="capped" style="min-height:90px;max-height:280px" placeholder="e.g. Theme 1 — price anxiety: “I can't justify 40 € a month”. Theme 2 — opening hours: “it closes before my last class ends”…"></textarea>
+    <div id="qualprompt" style="display:none">
+      <p style="margin:10px 0 6px"><b>Not sure which concepts to measure?</b> Copy this prompt into Claude, ChatGPT or Gemini: it turns your themes into concepts with their operational definition, analysis and scale. Then <b>you</b> choose three and build them in steps 2–3.</p>
+      <button class="copybtn" type="button" id="copyqp">copy the prompt: from themes to concepts</button>
+      <pre class="prompt" id="qp"></pre>
+    </div>
+  </div>
 </div>
 
 <div class="step" style="--c:var(--c1)">
@@ -242,9 +260,13 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
 
 <div class="bar">
   <button class="pdf" id="pdf">⬇ Download PDF</button>
+  <button class="ghost" id="savework" title="Download a file with everything you have done, to continue on another day or another computer">💾 Save my work</button>
+  <button class="ghost" id="openwork" title="Open a file saved with Save my work">📂 Open saved work</button>
+  <input type="file" id="workfile" accept=".json,application/json" style="display:none">
   <button class="ghost" id="clear">Clear worksheet</button>
   <span class="saved" id="saved">Saved in this browser</span>
 </div>
+<p class="hint noprint" style="margin-top:2px"><b>To continue another day:</b> your work saves itself in <b>this browser</b> on <b>this computer</b>. On a shared or university computer, or to switch computer, press <b>💾 Save my work</b> — it downloads a small file. Next time, open this page and press <b>📂 Open saved work</b> to pick up exactly where you left off. The <b>PDF</b> is what you hand in; the saved file is only for you.</p>
 <footer>Estudios de Mercado I · Tema 5.4 · The studio describes each scale; <b>you</b> decide which one your client's question needs.</footer>
 </div>
 
@@ -349,6 +371,44 @@ function renderProjects(){const el=$('#projects');el.innerHTML='';
     const ch=pc.querySelector('.chips');pr.concepts.forEach(cp=>{const b=document.createElement('button');b.className='chip';b.type='button';
       const done=state.items.some(x=>x.concept===cp.c);b.textContent=(done?'✓ ':'')+cp.c;b.onclick=()=>loadConcept(cp);ch.appendChild(b);});}
   else pc.innerHTML='';}
+
+
+/* ---------- start from a qualitative study ---------- */
+const QSRC={fg:['mkt3600_fg','focus group studio',d=>[['MY READ OF THE THEMES',d.w_themes],['AI THEMATIC ANALYSIS',d.w_airesult],['GROUP BIAS',d.w_bias],['DECISION',d.w_dec]]],
+  netno:['mkt3600_netno','netnography studio',d=>[['SOURCE',d.w_url],['MY READ OF THE THEMES',d.w_themes],['AI THEMATIC ANALYSIS',d.w_airesult],['BIAS OF THE MEDIUM',d.w_bias],['DECISION',d.w_dec]]],
+  case:['mkt3600_t3case','qualitative case studio',d=>[['THEMES AND QUOTES',d.w_find],['INSIGHTS',d.w_ins],['DECISION',d.w_dec]]]};
+document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const [k,name,f]=QSRC[b.dataset.q];const m=$('#qmsg');
+  let d=null;try{d=JSON.parse(localStorage.getItem(k)||'null');}catch(_){}
+  const parts=d?f(d).filter(x=>x[1]&&String(x[1]).trim()):[];
+  if(!parts.length){m.textContent=`Nothing saved in the ${name} in this browser. Open it on this computer (or open your saved work there), or paste / upload your results instead.`;return;}
+  const t=`FROM THE ${name.toUpperCase()}:\n`+parts.map(x=>`${x[0]}:\n${String(x[1]).trim()}`).join('\n\n');
+  const q=$('#w_qual');if(q.value.trim()&&!confirm('Add these results to what is already in the box?'))return;
+  q.value=(q.value.trim()?q.value.trim()+'\n\n':'')+t;m.textContent=`✓ Loaded from the ${name}: ${t.length.toLocaleString()} characters.`;refreshQual();save();});
+function loadScript(src){return new Promise((res,rej)=>{if(document.querySelector(`script[src="${src}"]`))return res();const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=()=>rej(new Error('could not load '+src));document.head.appendChild(s);});}
+async function readFile(f){const name=f.name.toLowerCase();
+  if(name.endsWith('.docx')){await loadScript('https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js');return (await mammoth.extractRawText({arrayBuffer:await f.arrayBuffer()})).value;}
+  if(name.endsWith('.pdf')){await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise;const out=[];
+    for(let i=1;i<=pdf.numPages;i++){const tc=await (await pdf.getPage(i)).getTextContent();out.push(tc.items.map(x=>x.str+(x.hasEOL?'\n':' ')).join(''));}
+    return out.join('\n\n');}
+  return await f.text();}
+$('#qfile').onchange=async e=>{const f=e.target.files[0];if(!f)return;const m=$('#qmsg');m.textContent='Reading '+f.name+'…';
+  try{const t=(await readFile(f)).replace(/\n{3,}/g,'\n\n').trim();if(!t){m.textContent='No text found (a scanned PDF?). Paste the text instead.';return;}
+    const q=$('#w_qual');q.value=(q.value.trim()?q.value.trim()+'\n\n':'')+t;m.textContent=`✓ ${f.name} read — ${t.length.toLocaleString()} characters.`;refreshQual();save();}
+  catch(err){m.textContent='Could not read it. Paste the text instead.';}};
+function qualPrompt(){return `I am a marketing-research student. My project: ${val('w_ptopic')||'[topic]'}${val('w_pclient')?' — for '+val('w_pclient'):''}${val('w_pdecision')?'. The decision the survey is for: '+val('w_pdecision'):''}.
+
+These are the results of my qualitative study:
+"""
+${val('w_qual').slice(0,40000)}
+"""
+
+I now need a SURVEY that quantifies these findings — how widespread each theme is, how strong, and in which segment. Propose 4–6 CONCEPTS to measure. For each, give in a table:
+theme it comes from | concept | conceptual definition | operational definition (the exact observable thing) | what the client needs to DO with the answer (count it / compare groups / rank / average / correlate / relative importance / image profile / exact quantity) | lowest level of measurement (nominal / ordinal / interval / ratio) | the scale or question type to use (Likert, semantic differential, Stapel, paired comparison, ranking, constant sum, dichotomous, multiple choice, multiple response, numeric, open).
+Use the participants' own words where you can. Do NOT write the questionnaire, and do not invent findings that are not in the results.`;}
+function refreshQual(){const has=!!val('w_qual');$('#qualprompt').style.display=has?'':'none';if(has)$('#qp').textContent=qualPrompt();}
+$('#copyqp').onclick=e=>copy(qualPrompt(),e.currentTarget);
 
 /* ---------- the project's concepts ---------- */
 function renderItems(){const el=$('#items');
@@ -490,15 +550,15 @@ function renderQuiz(){const el=$('#quiz');el.innerHTML='';let right=0,done=0;
 }
 
 /* ---------- persistence ---------- */
-const ids=['w_name','w_date','w_ptopic','w_pclient','w_pdecision','w_concept','w_opdef','w_sheet','w_why'];
+const ids=['w_name','w_date','w_ptopic','w_pclient','w_pdecision','w_qual','w_concept','w_opdef','w_sheet','w_why'];
 let st;function save(){clearTimeout(st);st=setTimeout(()=>{const o={state};ids.forEach(i=>o[i]=val(i));
   try{localStorage.setItem(KEY,JSON.stringify(o));$('#saved').textContent='Saved ✓ '+new Date().toLocaleTimeString();}catch(_){}} ,300);}
 function autogrow(t){t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px';}
 (function init(){let s={};try{s=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(_){}
   if(s.state)state=Object.assign(state,s.state);if(!TYPES[state.type])state.type='likert';
-  ids.forEach(i=>{const el=document.getElementById(i);el.value=s[i]||'';el.addEventListener('input',()=>{if(el.tagName==='TEXTAREA')autogrow(el);save();if(i==='w_concept')renderAnal();if(i==='w_ptopic')renderProjects();});if(el.tagName==='TEXTAREA')autogrow(el);});
+  ids.forEach(i=>{const el=document.getElementById(i);el.value=s[i]||'';el.addEventListener('input',()=>{if(el.tagName==='TEXTAREA')autogrow(el);save();if(i==='w_concept')renderAnal();if(i==='w_ptopic')renderProjects();if(['w_qual','w_ptopic','w_pclient','w_pdecision'].includes(i))refreshQual();});if(el.tagName==='TEXTAREA')autogrow(el);});
   if(!Array.isArray(state.items))state.items=[];
-  renderProjects();renderAnal();renderTypes();renderCfg();renderQuiz();renderItems();})();
+  renderProjects();renderAnal();renderTypes();renderCfg();renderQuiz();renderItems();refreshQual();})();
 $('#qreset').onclick=()=>{state.quiz={};renderQuiz();save();};
 function copy(text,btn){const o=btn.textContent;const ok=()=>{btn.textContent='copied ✓';setTimeout(()=>btn.textContent=o,1200);};
   const fb=()=>{try{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.top='-1000px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(_){btn.textContent='Ctrl+C';}};
@@ -513,12 +573,35 @@ $('#addQ').onclick=()=>{const m=$('#addmsg');
 $('#tobuilder').onclick=()=>{const m=$('#tbmsg');
   if(!val('w_ptopic')){m.textContent='Write your project topic in step 1 first.';return;}
   if(!state.items.length){m.textContent='Add at least one concept with ＋ in step 3 first.';return;}
-  const pkg={topic:val('w_ptopic'),client:val('w_pclient'),decision:val('w_pdecision'),
+  const pkg={topic:val('w_ptopic'),client:val('w_pclient'),decision:val('w_pdecision'),qual:val('w_qual'),
     needs:state.items.map(it=>({t:`${it.concept} — observed as: ${it.opdef||'?'} — planned scale: ${it.typeLabel} (${it.level})`,a:BUILDER_ANAL[it.anal]||'let the AI choose'}))};
   try{localStorage.setItem('em1_t5_from_scales',JSON.stringify(pkg));}catch(_){m.textContent='Could not hand it over in this browser — copy your concepts into the builder by hand.';return;}
   window.open('https://cmoreno34.github.io/questionnaire-builder/','_blank','noopener');m.textContent='✓ Opened the builder with your project.';};
 $('#pdf').onclick=()=>{if(!val('w_date'))$('#w_date').value=new Date().toLocaleDateString();window.print();};
 $('#clear').onclick=()=>{if(confirm('Clear the worksheet? Download your PDF first if you need it.')){try{localStorage.removeItem(KEY);}catch(_){}location.reload();}};
 const root=document.documentElement;$('#theme').onclick=()=>{const c=root.getAttribute('data-theme');root.setAttribute('data-theme',c==='dark'?'light':c==='light'?'dark':(matchMedia('(prefers-color-scheme:dark)').matches?'light':'dark'));};
+
+/* ---------- save my work to a file / open it again ---------- */
+(function(){
+  const APP=document.title;
+  function stamp(){const d=new Date(),z=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}_${z(d.getHours())}${z(d.getMinutes())}`;}
+  document.getElementById('savework').onclick=e=>{const btn=e.currentTarget;try{save();}catch(_){}
+    setTimeout(()=>{let data=null;try{data=localStorage.getItem(KEY);}catch(_){}
+      if(!data){alert('Nothing to save yet.');return;}
+      const who=(document.getElementById('w_name')||{}).value||'';
+      const blob=new Blob([JSON.stringify({app:APP,key:KEY,saved:new Date().toISOString(),data},null,1)],{type:'application/json'});
+      const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+      a.download=`${APP.toLowerCase().replace(/\s+/g,'-')}_${(who||'my-work').replace(/[^\wÀ-ſ-]+/g,'-').slice(0,40)}_${stamp()}.json`;
+      document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);
+      const o=btn.textContent;btn.textContent='💾 Saved ✓ — check your Downloads';setTimeout(()=>btn.textContent=o,2500);},450);};
+  document.getElementById('openwork').onclick=()=>document.getElementById('workfile').click();
+  document.getElementById('workfile').onchange=async e=>{const f=e.target.files[0];if(!f)return;
+    try{const o=JSON.parse(await f.text());
+      if(!o||o.key!==KEY||typeof o.data!=='string'){alert('This file was saved from a different tool'+(o&&o.app?` (“${o.app}”)`:'')+'. Open it in that tool.');return;}
+      if(!confirm(`Open the work saved on ${new Date(o.saved).toLocaleString()}? It replaces what is on this page now.`))return;
+      localStorage.setItem(KEY,o.data);location.reload();}
+    catch(_){alert('Could not read that file. Choose a file made with “Save my work”.');}
+    finally{e.target.value='';}};
+})();
 </script>
 </body></html>
