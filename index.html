@@ -102,6 +102,27 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
   .printonly{display:block;margin-bottom:10px;border-bottom:2px solid #2f6b4f;padding-bottom:6px}
 }
 
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:14px 0 4px;counter-reset:p}
+@media (max-width:640px){.process{grid-template-columns:1fr 1fr}}
+.process a,.process div{display:block;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--panel);text-decoration:none;color:var(--ink);font-size:12px;line-height:1.35}
+.process b{display:block;font:700 13px Archivo;margin-bottom:2px}
+.process .k{font:700 10px Archivo;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.process [aria-current]{background:var(--leaf);border-color:transparent;color:#fff}
+.process [aria-current] .k{color:rgba(255,255,255,.8)}
+.process .off{background:var(--ground);border-style:dashed}
+.brief{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.brief h3{margin:0 0 6px;color:var(--leaf-ink)}
+.brief .goal{font-size:15px;margin:0 0 12px}
+.brief ol{margin:0 0 12px;padding-left:22px;font-size:13.5px}
+.brief li{margin:5px 0}
+.brief .min{display:inline-block;font:700 10.5px Archivo;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:0 7px;margin-left:4px;white-space:nowrap}
+.brief .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.brief .two{grid-template-columns:1fr}}
+.brief .two div{background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px}
+.brief .two ul{margin:4px 0 0;padding-left:18px}
+.brief .next{font-size:13px;margin:12px 0 0;color:var(--soft)}
+.grp{font:700 10.5px Archivo;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:10px 0 2px;width:100%}
+
 .out{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--ground);margin:10px 0;font-size:14px}
 .out .lvl{font:900 20px Fraunces,serif;color:var(--c2)}
 .preview{border:2px dashed var(--line);border-radius:12px;padding:14px;background:#fff;color:#1d2420;margin:10px 0}
@@ -131,10 +152,27 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
   <h1>Scale studio</h1></div>
   <button class="themebtn" id="theme">◐ Theme</button>
 </header>
-<nav class="suite" aria-label="Tema 5 tools"><span style="align-self:center;font-weight:700">Tema 5 tools:</span><a href="https://cmoreno34.github.io/scale-studio/" aria-current="page">Scale studio</a><a href="https://cmoreno34.github.io/question-checker/">Question checker</a><a href="https://cmoreno34.github.io/questionnaire-builder/">Questionnaire builder</a></nav>
+<nav class="process" aria-label="Tema 5 — the questionnaire process"><a href="https://cmoreno34.github.io/scale-studio/" aria-current="page"><span class="k">Practical 1</span><b>Scale studio</b>Decide how to measure each concept</a><a href="https://cmoreno34.github.io/questionnaire-builder/"><span class="k">Practical 2</span><b>Questionnaire builder</b>Draft the questionnaire with AI — your decisions</a><a href="https://cmoreno34.github.io/question-checker/"><span class="k">Practical 3</span><b>Question checker</b>Find and fix the faults, pretest it</a><div class="off"><span class="k">Then</span><b>Pilot &amp; launch</b>3–5 real people, time it on a phone, field it</div></nav>
 <div class="printonly"><div style="font:700 11px Archivo;letter-spacing:.1em;text-transform:uppercase;color:#2f6b4f">Estudios de Mercado I · Tema 5 — Scale studio worksheet</div></div>
 
 <p class="sub"><b>The rule this tool exists to state:</b> the scale sets the ceiling on your analysis. So work <b>backwards</b> — decide the analysis the client's question needs, then write the question at a scale that allows it. Build it below and see it exactly as the respondent will.</p>
+
+<section class="brief noprint">
+  <h3>What this practical is for</h3>
+  <p class="goal">To learn the rule of 5.4: <b>the scale sets the ceiling on your analysis</b>. You will choose how to measure each concept of your project by working <b>backwards</b> from what the client needs to know — before you write a single question.</p>
+  <h3>What you will do</h3>
+  <ol>
+    <li><b>Step 1</b> — take one concept from your project (e.g. loyalty), say exactly how you will observe it, and choose what you must <b>do</b> with the answer (count it, average it, rank it…). Note the minimum level of measurement it gives you.<span class="min">5 min</span></li>
+    <li><b>Step 2</b> — build the scale, look at it as the respondent will, read the check panel and fix what it points out. Press <b>＋ add to my scales sheet</b>. Repeat for <b>three key concepts</b>.<span class="min">20 min</span></li>
+    <li><b>Step 3</b> — practise the four levels on 14 questions. Aim for 11 or more, and read the reason for every miss — the traps are on purpose.<span class="min">10 min</span></li>
+    <li><b>Step 4</b> — complete your scales sheet and defend one scale decision. Download the PDF.<span class="min">10 min</span></li>
+  </ol>
+  <div class="two">
+    <div><b>What you hand in</b><ul><li>The PDF: three concepts → operational definition → analysis → scale.</li><li>One scale decision, justified, and what you would lose with a lower scale.</li><li>Your practice score.</li></ul></div>
+    <div><b>How it is marked</b><ul><li>Each scale allows the analysis you need (no mean on a nominal question).</li><li>The operational definitions are observable, not vague.</li><li>The justification — the judgement is yours, not the tool's.</li></ul></div>
+  </div>
+  <p class="next"><b>Next →</b> your three concept → analysis lines become the “what you need to learn” list in the <a href="https://cmoreno34.github.io/questionnaire-builder/">questionnaire builder</a>.</p>
+</section>
 
 <div class="who">
   <label>Name / group <input id="w_name" placeholder="Group 3 — A. García"></label>
@@ -265,9 +303,13 @@ const DEF={
   open:{q:'What, if anything, would make you renew your membership?'}
 };
 function cfg(){return state.cfg[state.type]||(state.cfg[state.type]=JSON.parse(JSON.stringify(DEF[state.type])));}
+const TGROUPS=[['Scales — note 5.4 (non-comparative · comparative)',['likert','sd','stapel','paired','rank','csum']],
+  ['Question types — note 5.3',['dich','mc','multi','num','open']],
+  ['Extra — not in the note (the NPS format)',['rating']]];
 function renderTypes(){const el=$('#types');el.innerHTML='';
-  Object.entries(TYPES).forEach(([k,n])=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=n;b.setAttribute('aria-pressed',state.type===k);
-    b.onclick=()=>{state.type=k;renderTypes();renderCfg();save();};el.appendChild(b);});}
+  TGROUPS.forEach(([g,ks])=>{const h=document.createElement('div');h.className='grp';h.textContent=g;el.appendChild(h);
+    ks.forEach(k=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=TYPES[k];b.setAttribute('aria-pressed',state.type===k);
+    b.onclick=()=>{state.type=k;renderTypes();renderCfg();save();};el.appendChild(b);});});}
 function fld(key,label,kind,extra=''){const c=cfg();const v=c[key];
   if(kind==='area')return `<div><label class="fl">${label}</label><textarea class="capped" data-k="${key}" style="min-height:90px">${esc(v)}</textarea></div>`;
   if(kind==='chk')return `<label><input type="checkbox" data-k="${key}" ${v?'checked':''}> ${label}</label>`;
