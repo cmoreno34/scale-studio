@@ -44,7 +44,8 @@ nav.suite a[aria-current]{background:var(--leaf);color:#fff;border-color:transpa
 h3{font:700 13px Archivo;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);margin:16px 0 6px}
 label.fl{display:block;font:700 11px Archivo;letter-spacing:.06em;text-transform:uppercase;margin:10px 0 6px}
 input.txt,textarea,select.txt{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--ground);color:var(--ink);padding:10px 12px;font:400 14px/1.5 Archivo;resize:none}
-select.txt{width:auto;padding:8px 10px}
+select.txt{width:auto;max-width:100%;padding:8px 10px;text-overflow:ellipsis}
+.row>label.fl{max-width:100%;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 textarea{overflow:hidden;min-height:60px}
 textarea.capped{overflow:auto;resize:vertical}
 input.txt:focus,textarea:focus,select.txt:focus{outline:none;border-color:var(--c,var(--leaf))}
