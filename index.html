@@ -162,16 +162,17 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
   <p class="goal">To learn the rule of 5.4: <b>the scale sets the ceiling on your analysis</b>. You will choose how to measure each concept of your project by working <b>backwards</b> from what the client needs to know — before you write a single question.</p>
   <h3>What you will do</h3>
   <ol>
-    <li><b>Step 1</b> — take one concept from your project — or pick a <b>suggested topic</b> —, say exactly how you will observe it, and choose what you must <b>do</b> with the answer (count it, average it, rank it…). Note the minimum level of measurement it gives you.<span class="min">5 min</span></li>
-    <li><b>Step 2</b> — build the scale, look at it as the respondent will, read the check panel and fix what it points out. Press <b>＋ add to my scales sheet</b>. Repeat for <b>three key concepts</b>.<span class="min">20 min</span></li>
-    <li><b>Step 3</b> — practise the four levels on 14 questions. Aim for 11 or more, and read the reason for every miss — the traps are on purpose.<span class="min">10 min</span></li>
-    <li><b>Step 4</b> — complete your scales sheet and defend one scale decision. Download the PDF.<span class="min">10 min</span></li>
+    <li><b>Step 1</b> — write your <b>project</b> (topic, client, decision) — or pick a <b>suggested project</b>. You will keep this same project in the three practicals.<span class="min">3 min</span></li>
+    <li><b>Step 2</b> — take one concept of the project, say exactly how you will observe it, and choose what you must <b>do</b> with the answer (count it, average it, rank it…). Note the minimum level of measurement it gives you.<span class="min">5 min</span></li>
+    <li><b>Step 3</b> — build the scale, look at it as the respondent will, read the check panel and fix what it points out. Press <b>＋ add this concept to my project</b>. Repeat steps 2–3 for <b>three key concepts</b>.<span class="min">20 min</span></li>
+    <li><b>Step 4</b> — practise the four levels on 14 questions. Aim for 11 or more, and read the reason for every miss — the traps are on purpose.<span class="min">10 min</span></li>
+    <li><b>Step 5</b> — check your three concepts, defend one scale decision and download the PDF. Then press <b>Send my project to the builder</b>: your project and your three concepts arrive in the questionnaire builder already filled in.<span class="min">10 min</span></li>
   </ol>
   <div class="two">
     <div><b>What you hand in</b><ul><li>The PDF: three concepts → operational definition → analysis → scale.</li><li>One scale decision, justified, and what you would lose with a lower scale.</li><li>Your practice score.</li></ul></div>
     <div><b>How it is marked</b><ul><li>Each scale allows the analysis you need (no mean on a nominal question).</li><li>The operational definitions are observable, not vague.</li><li>The justification — the judgement is yours, not the tool's.</li></ul></div>
   </div>
-  <p class="next"><b>Next →</b> your three concept → analysis lines become the “what you need to learn” list in the <a href="https://cmoreno34.github.io/questionnaire-builder/">questionnaire builder</a>.</p>
+  <p class="next"><b>Next →</b> <b>Send my project to the builder</b> (step 5) carries your project and your three concepts — with the analysis and the scale you chose — into the <a href="https://cmoreno34.github.io/questionnaire-builder/">questionnaire builder</a>. You do not type them again.</p>
 </section>
 
 <div class="who">
@@ -180,10 +181,22 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
 </div>
 
 <div class="step" style="--c:var(--c1)">
-  <h2><span class="n">1</span> Start from the analysis, not the question</h2>
-  <p class="lead">Name the concept, say how you will observe it, then pick what you need to <b>do</b> with the answer. The studio tells you the lowest scale that allows it.</p>
-  <label class="fl">No topic yet? Pick one to practise — it fills the boxes below, then change anything</label>
-  <div class="chips" id="topics"></div>
+  <h2><span class="n">1</span> Your project — the same one in the three practicals</h2>
+  <p class="lead">Write the project your questionnaire is for. It travels with you: the builder and the checker will use this same topic.</p>
+  <label class="fl">No project yet? Pick a suggested one — it fills the boxes and gives you three concepts to measure</label>
+  <div class="chips" id="projects"></div>
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:1;min-width:220px"><label class="fl" for="w_ptopic">Topic</label><input class="txt" id="w_ptopic" placeholder="e.g. how students choose a gym"></div>
+    <div style="flex:1;min-width:220px"><label class="fl" for="w_pclient">Client</label><input class="txt" id="w_pclient" placeholder="e.g. a low-cost gym chain opening near campus"></div>
+  </div>
+  <label class="fl" for="w_pdecision">The decision the survey is for</label>
+  <input class="txt" id="w_pdecision" placeholder="e.g. which membership plan and opening hours to launch with">
+</div>
+
+<div class="step" style="--c:var(--c1)">
+  <h2><span class="n">2</span> One concept — start from the analysis, not the question</h2>
+  <p class="lead">Name a concept of your project, say how you will observe it, then pick what you need to <b>do</b> with the answer. The studio tells you the lowest scale that allows it.</p>
+  <div id="pconcepts"></div>
   <div class="row" style="align-items:flex-start">
     <div style="flex:1;min-width:220px"><label class="fl" for="w_concept">Concept (the idea)</label><input class="txt" id="w_concept" placeholder="e.g. loyalty to the gym"></div>
     <div style="flex:2;min-width:260px"><label class="fl" for="w_opdef">Operational definition (what you will observe)</label><input class="txt" id="w_opdef" placeholder="e.g. likelihood to renew the membership next term"></div>
@@ -194,7 +207,7 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
 </div>
 
 <div class="step" style="--c:var(--c2)">
-  <h2><span class="n">2</span> Build the scale — see it as the respondent will</h2>
+  <h2><span class="n">3</span> Build the scale — see it as the respondent will</h2>
   <p class="lead">Pick a scale type, write your item, and the preview updates live. The panel under it states the level of measurement and the analysis it unlocks.</p>
   <div class="chips" id="types"></div>
   <div class="cfg" id="cfg"></div>
@@ -202,24 +215,29 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
   <div class="out" id="spec"></div>
   <div class="row noprint">
     <button class="copybtn" id="copyQ" style="margin:0">copy as text (for Google / MS Forms)</button>
-    <button class="copybtn" id="addQ" style="margin:0">＋ add to my scales sheet (step 4)</button>
+    <button class="btn sm" id="addQ">＋ add this concept to my project</button><span class="hint" id="addmsg"></span>
   </div>
 </div>
 
 <div class="step" style="--c:var(--c3)">
-  <h2><span class="n">3</span> Practise — name the level of measurement</h2>
+  <h2><span class="n">4</span> Practise — name the level of measurement</h2>
   <p class="lead">For each question, pick the level. You get the reason straight away — including the traps (numbers that are only labels, two-point “scales”, the Likert convention).</p>
   <div id="quiz"></div>
   <div class="row"><span class="score" id="qscore"></span><button class="btn sm alt noprint" id="qreset">reset practice</button></div>
 </div>
 
 <div class="step" style="--c:var(--c4)">
-  <h2><span class="n">4</span> Your project's scales</h2>
-  <p class="lead">For each key concept in your project: concept → operational definition → analysis you need → the scale you will use. Paste from step 2 with the ＋ button, then justify.</p>
-  <label class="fl" for="w_sheet">My scales sheet</label>
-  <textarea id="w_sheet" style="min-height:120px" placeholder="Loyalty → likelihood to renew next term → need a MEAN to compare first-years vs others (t-test) → 7-point labelled Likert (interval by convention)."></textarea>
+  <h2><span class="n">5</span> Your project's concepts — then send them to the builder</h2>
+  <p class="lead">Every concept you added with ＋ is listed here: concept → operational definition → analysis → scale. Aim for <b>three</b>. Remove any you do not want with ×.</p>
+  <div id="items"></div>
+  <label class="fl" for="w_sheet">Notes on your scales (optional)</label>
+  <textarea id="w_sheet" placeholder="Anything you want to add about your scales — e.g. why 7 points and not 5."></textarea>
   <label class="fl" for="w_why">The one scale decision you would defend to the client — and what you would lose with a lower scale</label>
   <textarea id="w_why" placeholder="e.g. We asked hours per week as a number (ratio), not Rarely/Often, because the client wants to correlate study hours with music use — two labels would have made that impossible."></textarea>
+  <div class="how noprint" style="margin-top:14px">
+    <b>Next: the questionnaire builder.</b> Download your PDF first, then press the button. Your topic, client, decision and every concept above — with its analysis and its scale — open in the builder already filled in (its steps 1 and 3). You do not type anything again.
+    <div class="row" style="margin-top:8px"><button class="btn" id="tobuilder">Send my project to the builder →</button><span class="hint" id="tbmsg"></span></div>
+  </div>
 </div>
 
 <div class="bar">
@@ -236,7 +254,7 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const val=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
 const lines=t=>String(t||'').split('\n').map(x=>x.trim()).filter(Boolean);
 const KEY='em1_t5_scale_studio';
-let state={anal:null,type:'likert',cfg:{},quiz:{}};
+let state={anal:null,type:'likert',cfg:{},quiz:{},items:[],project:null};
 
 /* ---------- 1. analysis → scale ---------- */
 const ANAL={
@@ -289,26 +307,57 @@ function renderAnal(){
   o.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{state.type=b.dataset.t;renderTypes();renderCfg();document.querySelector('#types').scrollIntoView({behavior:'smooth',block:'center'});save();});
 }
 
-/* ---------- suggested topics ---------- */
-const TOPICS=[
- {n:'🏋️ Gym loyalty',c:'loyalty to the gym',o:'likelihood to renew the membership next term',a:'mean',t:'likert',q:'I will renew my membership at this gym next term.'},
- {n:'🎧 Music while studying',c:'music use while studying',o:'hours per week of music while studying',a:'qty',t:'num',q:'In a normal week, how many hours do you listen to music while studying?'},
- {n:'👟 Sneaker brand image',c:'brand image of two sneaker brands',o:'position of each brand between pairs of opposite adjectives',a:'image',t:'sd',q:'How would you describe this brand?'},
- {n:'📱 Choosing a phone',c:'what drives the choice of a phone',o:'relative importance of price, battery, camera and design',a:'weight',t:'csum',q:'Share 100 points across these by how much each matters when you choose a phone.',opts:'Price\nBattery\nCamera\nDesign'},
- {n:'📺 Streaming services',c:'streaming services used',o:'services used in the last month',a:'freq',t:'multi',q:'Which of these streaming services have you used in the last month? (tick all that apply)',opts:'Netflix\nHBO Max\nDisney+\nPrime Video\nFilmin'},
- {n:'☕ Campus café',c:'satisfaction with the campus café',o:'rating of the café on a labelled 5-point scale, compared between first-years and the rest',a:'mean',t:'likert',q:'Overall, I am satisfied with the campus café.'},
- {n:'🎫 Festival choice',c:'what matters when choosing a music festival',o:'order of importance of line-up, price, location and friends going',a:'rank',t:'rank',q:'Rank these from 1 (most important) to 4 when choosing a festival.',opts:'Line-up\nTicket price\nLocation\nFriends going'},
- {n:'🛵 Delivery apps by year',c:'delivery app used most',o:'the one app used most often, compared across years of study',a:'xtab',t:'mc',q:'Which food-delivery app do you use most often?',opts:'Glovo\nUber Eats\nJust Eat\nI do not use delivery apps'},
- {n:'💬 Why they left',c:'reasons for leaving a subscription',o:'the reasons in their own words',a:'why',t:'open',q:'Why did you cancel your last subscription?'}
+/* ---------- suggested projects ---------- */
+const PROJECTS=[
+ {n:'🏋️ A gym near campus',topic:'how students choose a gym',client:'a low-cost gym chain opening a branch next to campus',decision:'which membership plan and opening hours to launch with',
+  concepts:[
+   {c:'loyalty to the current gym',o:'likelihood to renew the membership next term',a:'mean',t:'likert',q:'I will renew my gym membership next term.'},
+   {c:'what drives the choice of a gym',o:'relative importance of price, location, hours and equipment',a:'weight',t:'csum',q:'Share 100 points across these by how much each matters when you choose a gym.',opts:'Price\nLocation\nOpening hours\nEquipment'},
+   {c:'gym use by year of study',o:'current gym situation, compared between first-years and the rest',a:'xtab',t:'mc',q:'Which best describes you right now?',opts:'I pay for a gym\nI used to, not any more\nI am thinking about joining\nI do not use a gym'}]},
+ {n:'🎧 Music while studying',topic:'music while studying',client:'a music-streaming app planning a student plan',decision:'whether to launch a “study mode” and what to put in it',
+  concepts:[
+   {c:'music use while studying',o:'hours per week of music while studying',a:'qty',t:'num',q:'In a normal week, how many hours do you listen to music while studying?'},
+   {c:'streaming services used',o:'services used in the last month',a:'freq',t:'multi',q:'Which of these have you used in the last month? (tick all that apply)',opts:'Spotify\nApple Music\nYouTube Music\nAmazon Music'},
+   {c:'belief that music helps concentration',o:'agreement that music helps them concentrate',a:'mean',t:'likert',q:'Music helps me concentrate when I study.'}]},
+ {n:'☕ The campus café',topic:'the campus café',client:'the university catering service',decision:'what to change first: price, menu, speed or space',
+  concepts:[
+   {c:'satisfaction with the café',o:'overall satisfaction on a labelled scale, compared between first-years and the rest',a:'mean',t:'likert',q:'Overall, I am satisfied with the campus café.'},
+   {c:'what matters in a café',o:'relative importance of price, food quality, speed and space',a:'weight',t:'csum',q:'Share 100 points across these by how much each matters when you choose where to eat on campus.',opts:'Price\nFood quality\nSpeed of service\nSpace to sit'},
+   {c:'reasons for eating elsewhere',o:'the reasons in their own words',a:'why',t:'open',q:'What, if anything, makes you eat somewhere other than the campus café?'}]},
+ {n:'👟 Two sneaker brands',topic:'the image of two sneaker brands among students',client:'a sneaker brand competing with a bigger rival',decision:'which image attribute to push in the next campaign',
+  concepts:[
+   {c:'brand image',o:'position of each brand between pairs of opposite adjectives',a:'image',t:'sd',q:'How would you describe this brand?'},
+   {c:'preference between brands',o:'which brand wins in each pair',a:'rank',t:'paired',q:'For each pair, which sneaker brand would you rather buy?',opts:'Brand A\nBrand B\nBrand C\nBrand D'},
+   {c:'purchase intention',o:'likelihood to buy the brand in the next six months',a:'mean',t:'rating',q:'How likely are you to buy this brand in the next six months?'}]},
+ {n:'🛵 A new delivery app',topic:'food-delivery apps among students',client:'a new food-delivery app launching in Madrid',decision:'which student segment to target first',
+  concepts:[
+   {c:'app used most',o:'the one app used most often, compared across years of study',a:'xtab',t:'mc',q:'Which food-delivery app do you use most often?',opts:'Glovo\nUber Eats\nJust Eat\nI do not use delivery apps'},
+   {c:'order frequency',o:'orders per week in a normal week',a:'qty',t:'num',q:'In a normal week, how many times do you order food through an app?'},
+   {c:'what decides the app',o:'order of importance of price, speed, choice and promotions',a:'rank',t:'rank',q:'Rank these from 1 (most important) to 4 when you choose a delivery app.',opts:'Price\nDelivery speed\nChoice of restaurants\nPromotions'}]}
 ];
-function renderTopics(){const el=$('#topics');el.innerHTML='';
-  TOPICS.forEach(tp=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=tp.n;
-    b.onclick=()=>{$('#w_concept').value=tp.c;$('#w_opdef').value=tp.o;state.anal=tp.a;state.type=tp.t;
-      const c=JSON.parse(JSON.stringify(DEF[tp.t]));c.q=tp.q;if(tp.opts)c.opts=tp.opts;state.cfg[tp.t]=c;
-      renderAnal();renderTypes();renderCfg();save();$('#analOut').scrollIntoView({behavior:'smooth',block:'nearest'});};
-    el.appendChild(b);});}
+function loadConcept(cp){$('#w_concept').value=cp.c;$('#w_opdef').value=cp.o;state.anal=cp.a;state.type=cp.t;
+  const c=JSON.parse(JSON.stringify(DEF[cp.t]));c.q=cp.q;if(cp.opts)c.opts=cp.opts;state.cfg[cp.t]=c;
+  renderAnal();renderTypes();renderCfg();save();}
+function renderProjects(){const el=$('#projects');el.innerHTML='';
+  PROJECTS.forEach((pr,i)=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=pr.n;b.setAttribute('aria-pressed',state.project===i);
+    b.onclick=()=>{if((val('w_ptopic')&&val('w_ptopic')!==pr.topic)&&!confirm('Replace your project with “'+pr.topic+'”?'))return;
+      $('#w_ptopic').value=pr.topic;$('#w_pclient').value=pr.client;$('#w_pdecision').value=pr.decision;state.project=i;
+      renderProjects();loadConcept(pr.concepts[0]);$('#pconcepts').scrollIntoView({behavior:'smooth',block:'start'});};
+    el.appendChild(b);});
+  const pc=$('#pconcepts');const pr=PROJECTS[state.project];
+  if(pr&&val('w_ptopic')===pr.topic){pc.innerHTML='<label class="fl">Concepts of this project — measure each one (steps 2–3), then ＋ add it</label><div class="chips"></div>';
+    const ch=pc.querySelector('.chips');pr.concepts.forEach(cp=>{const b=document.createElement('button');b.className='chip';b.type='button';
+      const done=state.items.some(x=>x.concept===cp.c);b.textContent=(done?'✓ ':'')+cp.c;b.onclick=()=>loadConcept(cp);ch.appendChild(b);});}
+  else pc.innerHTML='';}
 
-/* ---------- 2. builder ---------- */
+/* ---------- the project's concepts ---------- */
+function renderItems(){const el=$('#items');
+  if(!state.items.length){el.innerHTML='<p class="hint">No concepts yet — build a scale in step 3 and press <b>＋ add this concept to my project</b>.</p>';return;}
+  el.innerHTML=`<p class="score">${state.items.length} concept${state.items.length>1?'s':''}${state.items.length<3?' — aim for three':' ✓'}</p>`+state.items.map((it,i)=>`<div class="card"><div class="row" style="justify-content:space-between;align-items:flex-start;margin:0"><p class="qtext" style="flex:1">${i+1}. ${esc(it.concept)}</p><button class="x noprint" data-del="${i}" title="remove" type="button" style="border:1px solid var(--line);background:var(--panel);color:var(--soft);border-radius:8px;width:30px;height:30px;cursor:pointer">×</button></div><p class="opts" style="margin:0 0 4px">Observed as: ${esc(it.opdef||'—')}<br>Analysis: <b>${esc(it.analLabel||'—')}</b> · Scale: <b>${esc(it.typeLabel)}</b> (${esc(it.level)})</p><pre style="white-space:pre-wrap;font:12px/1.5 ui-monospace,monospace;margin:4px 0 0;color:var(--soft)">${esc(it.text)}</pre></div>`).join('');
+  el.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{state.items.splice(+b.dataset.del,1);renderItems();renderProjects();save();});}
+const BUILDER_ANAL={freq:'% and mode (frequencies)',xtab:'compare groups (cross-tab)',rank:'order / ranking (median)',mean:'average & compare means (t-test)',corr:'relate two measures (correlation)',weight:'relative importance (constant sum)',image:'brand image profile',qty:'exact quantity',why:'reasons in their words (open)'};
+
+
 const DEF={
   likert:{q:'I would recommend this gym to a friend.',pts:'5',all:true,dk:false},
   sd:{q:'How would you describe the brand?',pairs:'Cheap | Expensive\nBoring | Fun\nOld-fashioned | Modern\nUnreliable | Reliable',pts:'7'},
@@ -441,21 +490,33 @@ function renderQuiz(){const el=$('#quiz');el.innerHTML='';let right=0,done=0;
 }
 
 /* ---------- persistence ---------- */
-const ids=['w_name','w_date','w_concept','w_opdef','w_sheet','w_why'];
+const ids=['w_name','w_date','w_ptopic','w_pclient','w_pdecision','w_concept','w_opdef','w_sheet','w_why'];
 let st;function save(){clearTimeout(st);st=setTimeout(()=>{const o={state};ids.forEach(i=>o[i]=val(i));
   try{localStorage.setItem(KEY,JSON.stringify(o));$('#saved').textContent='Saved ✓ '+new Date().toLocaleTimeString();}catch(_){}} ,300);}
 function autogrow(t){t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px';}
 (function init(){let s={};try{s=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(_){}
   if(s.state)state=Object.assign(state,s.state);if(!TYPES[state.type])state.type='likert';
-  ids.forEach(i=>{const el=document.getElementById(i);el.value=s[i]||'';el.addEventListener('input',()=>{if(el.tagName==='TEXTAREA')autogrow(el);save();if(i==='w_concept')renderAnal();});if(el.tagName==='TEXTAREA')autogrow(el);});
-  renderTopics();renderAnal();renderTypes();renderCfg();renderQuiz();})();
+  ids.forEach(i=>{const el=document.getElementById(i);el.value=s[i]||'';el.addEventListener('input',()=>{if(el.tagName==='TEXTAREA')autogrow(el);save();if(i==='w_concept')renderAnal();if(i==='w_ptopic')renderProjects();});if(el.tagName==='TEXTAREA')autogrow(el);});
+  if(!Array.isArray(state.items))state.items=[];
+  renderProjects();renderAnal();renderTypes();renderCfg();renderQuiz();renderItems();})();
 $('#qreset').onclick=()=>{state.quiz={};renderQuiz();save();};
 function copy(text,btn){const o=btn.textContent;const ok=()=>{btn.textContent='copied ✓';setTimeout(()=>btn.textContent=o,1200);};
   const fb=()=>{try{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.top='-1000px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(_){btn.textContent='Ctrl+C';}};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok).catch(fb);}else{fb();}}
 $('#copyQ').onclick=e=>copy(asText(),e.currentTarget);
-$('#addQ').onclick=e=>{const t=$('#w_sheet');const head=[val('w_concept'),val('w_opdef'),state.anal?ANAL[state.anal].label:''].filter(Boolean).join(' → ');
-  t.value=(t.value.trim()?t.value.trim()+'\n\n':'')+(head?head+'\n':'')+asText();autogrow(t);save();const b=e.currentTarget,o=b.textContent;b.textContent='added ✓';setTimeout(()=>b.textContent=o,1200);};
+$('#addQ').onclick=()=>{const m=$('#addmsg');
+  if(!val('w_concept')){m.textContent='Write the concept in step 2 first.';return;}
+  const it={concept:val('w_concept'),opdef:val('w_opdef'),anal:state.anal,analLabel:state.anal?ANAL[state.anal].label:'',type:state.type,typeLabel:TYPES[state.type],level:spec()[0],text:asText()};
+  const k=state.items.findIndex(x=>x.concept.toLowerCase()===it.concept.toLowerCase());
+  if(k>=0)state.items[k]=it;else state.items.push(it);
+  renderItems();renderProjects();save();m.textContent=(k>=0?'✓ updated':'✓ added')+` — ${state.items.length} concept${state.items.length>1?'s':''} in your project (step 5).`;};
+$('#tobuilder').onclick=()=>{const m=$('#tbmsg');
+  if(!val('w_ptopic')){m.textContent='Write your project topic in step 1 first.';return;}
+  if(!state.items.length){m.textContent='Add at least one concept with ＋ in step 3 first.';return;}
+  const pkg={topic:val('w_ptopic'),client:val('w_pclient'),decision:val('w_pdecision'),
+    needs:state.items.map(it=>({t:`${it.concept} — observed as: ${it.opdef||'?'} — planned scale: ${it.typeLabel} (${it.level})`,a:BUILDER_ANAL[it.anal]||'let the AI choose'}))};
+  try{localStorage.setItem('em1_t5_from_scales',JSON.stringify(pkg));}catch(_){m.textContent='Could not hand it over in this browser — copy your concepts into the builder by hand.';return;}
+  window.open('https://cmoreno34.github.io/questionnaire-builder/','_blank','noopener');m.textContent='✓ Opened the builder with your project.';};
 $('#pdf').onclick=()=>{if(!val('w_date'))$('#w_date').value=new Date().toLocaleDateString();window.print();};
 $('#clear').onclick=()=>{if(confirm('Clear the worksheet? Download your PDF first if you need it.')){try{localStorage.removeItem(KEY);}catch(_){}location.reload();}};
 const root=document.documentElement;$('#theme').onclick=()=>{const c=root.getAttribute('data-theme');root.setAttribute('data-theme',c==='dark'?'light':c==='light'?'dark':(matchMedia('(prefers-color-scheme:dark)').matches?'light':'dark'));};
