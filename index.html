@@ -162,7 +162,7 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
   <p class="goal">To learn the rule of 5.4: <b>the scale sets the ceiling on your analysis</b>. You will choose how to measure each concept of your project by working <b>backwards</b> from what the client needs to know — before you write a single question.</p>
   <h3>What you will do</h3>
   <ol>
-    <li><b>Step 1</b> — take one concept from your project (e.g. loyalty), say exactly how you will observe it, and choose what you must <b>do</b> with the answer (count it, average it, rank it…). Note the minimum level of measurement it gives you.<span class="min">5 min</span></li>
+    <li><b>Step 1</b> — take one concept from your project — or pick a <b>suggested topic</b> —, say exactly how you will observe it, and choose what you must <b>do</b> with the answer (count it, average it, rank it…). Note the minimum level of measurement it gives you.<span class="min">5 min</span></li>
     <li><b>Step 2</b> — build the scale, look at it as the respondent will, read the check panel and fix what it points out. Press <b>＋ add to my scales sheet</b>. Repeat for <b>three key concepts</b>.<span class="min">20 min</span></li>
     <li><b>Step 3</b> — practise the four levels on 14 questions. Aim for 11 or more, and read the reason for every miss — the traps are on purpose.<span class="min">10 min</span></li>
     <li><b>Step 4</b> — complete your scales sheet and defend one scale decision. Download the PDF.<span class="min">10 min</span></li>
@@ -182,6 +182,8 @@ footer{margin:28px 0 30px;font-size:12px;color:var(--soft);border-top:1px solid 
 <div class="step" style="--c:var(--c1)">
   <h2><span class="n">1</span> Start from the analysis, not the question</h2>
   <p class="lead">Name the concept, say how you will observe it, then pick what you need to <b>do</b> with the answer. The studio tells you the lowest scale that allows it.</p>
+  <label class="fl">No topic yet? Pick one to practise — it fills the boxes below, then change anything</label>
+  <div class="chips" id="topics"></div>
   <div class="row" style="align-items:flex-start">
     <div style="flex:1;min-width:220px"><label class="fl" for="w_concept">Concept (the idea)</label><input class="txt" id="w_concept" placeholder="e.g. loyalty to the gym"></div>
     <div style="flex:2;min-width:260px"><label class="fl" for="w_opdef">Operational definition (what you will observe)</label><input class="txt" id="w_opdef" placeholder="e.g. likelihood to renew the membership next term"></div>
@@ -286,6 +288,25 @@ function renderAnal(){
   <div class="chips">${a.types.map(t=>`<button class="chip" type="button" data-t="${t}">${TYPES[t]}</button>`).join('')}</div>`;
   o.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{state.type=b.dataset.t;renderTypes();renderCfg();document.querySelector('#types').scrollIntoView({behavior:'smooth',block:'center'});save();});
 }
+
+/* ---------- suggested topics ---------- */
+const TOPICS=[
+ {n:'🏋️ Gym loyalty',c:'loyalty to the gym',o:'likelihood to renew the membership next term',a:'mean',t:'likert',q:'I will renew my membership at this gym next term.'},
+ {n:'🎧 Music while studying',c:'music use while studying',o:'hours per week of music while studying',a:'qty',t:'num',q:'In a normal week, how many hours do you listen to music while studying?'},
+ {n:'👟 Sneaker brand image',c:'brand image of two sneaker brands',o:'position of each brand between pairs of opposite adjectives',a:'image',t:'sd',q:'How would you describe this brand?'},
+ {n:'📱 Choosing a phone',c:'what drives the choice of a phone',o:'relative importance of price, battery, camera and design',a:'weight',t:'csum',q:'Share 100 points across these by how much each matters when you choose a phone.',opts:'Price\nBattery\nCamera\nDesign'},
+ {n:'📺 Streaming services',c:'streaming services used',o:'services used in the last month',a:'freq',t:'multi',q:'Which of these streaming services have you used in the last month? (tick all that apply)',opts:'Netflix\nHBO Max\nDisney+\nPrime Video\nFilmin'},
+ {n:'☕ Campus café',c:'satisfaction with the campus café',o:'rating of the café on a labelled 5-point scale, compared between first-years and the rest',a:'mean',t:'likert',q:'Overall, I am satisfied with the campus café.'},
+ {n:'🎫 Festival choice',c:'what matters when choosing a music festival',o:'order of importance of line-up, price, location and friends going',a:'rank',t:'rank',q:'Rank these from 1 (most important) to 4 when choosing a festival.',opts:'Line-up\nTicket price\nLocation\nFriends going'},
+ {n:'🛵 Delivery apps by year',c:'delivery app used most',o:'the one app used most often, compared across years of study',a:'xtab',t:'mc',q:'Which food-delivery app do you use most often?',opts:'Glovo\nUber Eats\nJust Eat\nI do not use delivery apps'},
+ {n:'💬 Why they left',c:'reasons for leaving a subscription',o:'the reasons in their own words',a:'why',t:'open',q:'Why did you cancel your last subscription?'}
+];
+function renderTopics(){const el=$('#topics');el.innerHTML='';
+  TOPICS.forEach(tp=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=tp.n;
+    b.onclick=()=>{$('#w_concept').value=tp.c;$('#w_opdef').value=tp.o;state.anal=tp.a;state.type=tp.t;
+      const c=JSON.parse(JSON.stringify(DEF[tp.t]));c.q=tp.q;if(tp.opts)c.opts=tp.opts;state.cfg[tp.t]=c;
+      renderAnal();renderTypes();renderCfg();save();$('#analOut').scrollIntoView({behavior:'smooth',block:'nearest'});};
+    el.appendChild(b);});}
 
 /* ---------- 2. builder ---------- */
 const DEF={
@@ -427,7 +448,7 @@ function autogrow(t){t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px
 (function init(){let s={};try{s=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(_){}
   if(s.state)state=Object.assign(state,s.state);if(!TYPES[state.type])state.type='likert';
   ids.forEach(i=>{const el=document.getElementById(i);el.value=s[i]||'';el.addEventListener('input',()=>{if(el.tagName==='TEXTAREA')autogrow(el);save();if(i==='w_concept')renderAnal();});if(el.tagName==='TEXTAREA')autogrow(el);});
-  renderAnal();renderTypes();renderCfg();renderQuiz();})();
+  renderTopics();renderAnal();renderTypes();renderCfg();renderQuiz();})();
 $('#qreset').onclick=()=>{state.quiz={};renderQuiz();save();};
 function copy(text,btn){const o=btn.textContent;const ok=()=>{btn.textContent='copied ✓';setTimeout(()=>btn.textContent=o,1200);};
   const fb=()=>{try{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.top='-1000px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(_){btn.textContent='Ctrl+C';}};
